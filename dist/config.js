@@ -17,7 +17,7 @@ var _default = {
     host: process.env.DATABASE_HOST || "blb2gqtlbfim9rmwhdwe-mysql.services.clever-cloud.com",
     user: process.env.DATABASE_USER || "u7lb0nnb7lxg5l9h",
     password: process.env.DATABASE_PASSWORD || "DCswNU4euKT2O9QFg66V",
-    database: process.env.DATABASE_NAME || "appservices2"
+    database: process.env.DATABASE_NAME || "blb2gqtlbfim9rmwhdwe"
   },
   port: process.env.PORT || 4010,
   SECRET: 'RMS-WebApp-API'
