@@ -5,7 +5,7 @@ import { encryptPassword, decodeUserPermission, maxRoll,encodeUserPermission, pe
 
 
 export const signup = async (req, res)=>{
-    const {IdUser_PK, UserName, UserEmail, UserLastName, avatar }=req.body;
+    const {IdUser_PK, UserName, UserEmail, UserLastName, avatar,IdCompany_FK }=req.body;
     const password = await encryptPassword(IdUser_PK + "**");
     const userPermission = encodeUserPermission(permissionInit, IdUser_PK )
     const maxroll=encodeUserPermission(maxRoll(permissionInit), IdUser_PK )
@@ -15,7 +15,7 @@ export const signup = async (req, res)=>{
         UserName, 
         password,
         UserLastName,
-        
+        IdCompany_FK,
         userPermission,
         UserEmail,
         maxRoll:maxroll,

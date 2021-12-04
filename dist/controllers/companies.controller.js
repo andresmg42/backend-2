@@ -21,10 +21,10 @@ var createCompany = /*#__PURE__*/function () {
       Actividad_Economica,
       Persona_Contacto,
       Telefono_Contacto,
-      IdEmpresa_PK
+      IdCompany_PK
     } = req.body;
     var insertData = {
-      IdEmpresa_PK,
+      IdCompany_PK,
       Razon_Social,
       Representante_Legal,
       Actividad_Economica,
@@ -61,7 +61,7 @@ exports.createCompany = createCompany;
 
 var getCompanyById = /*#__PURE__*/function () {
   var _ref2 = _asyncToGenerator(function* (req, res) {
-    var company = yield _database.default.query("SELECT * FROM company WHERE IdEmpresa_PK=?", [req.params.id]);
+    var company = yield _database.default.query("SELECT * FROM company WHERE IdCompany_PK=?", [req.params.id]);
     if (company.length > 0) res.json({
       status: 200,
       data: company,
@@ -100,7 +100,7 @@ exports.getCompanies = getCompanies;
 var deleteCompanyById = /*#__PURE__*/function () {
   var _ref4 = _asyncToGenerator(function* (req, res) {
     var Status = "delete";
-    var result = yield _database.default.query("UPDATE company SET Status=? WHERE  Status='active' AND IdEmpresa_PK = ?", [Status, req.params.id]);
+    var result = yield _database.default.query("UPDATE company SET Status=? WHERE  Status='active' AND IdCompany_PK = ?", [Status, req.params.id]);
     if (result.affectedRows) res.json({
       status: 200,
       data: {},
@@ -122,7 +122,7 @@ exports.deleteCompanyById = deleteCompanyById;
 var undeleteCompany = /*#__PURE__*/function () {
   var _ref5 = _asyncToGenerator(function* (req, res) {
     var Status = "active";
-    var result = yield _database.default.query("UPDATE company SET Status=? WHERE  Status='delete' AND IdEmpresa_PK = ?", [Status, req.params.id]);
+    var result = yield _database.default.query("UPDATE company SET Status=? WHERE  Status='delete' AND IdCompany_PK = ?", [Status, req.params.id]);
     if (result.affectedRows) res.json({
       status: 200,
       data: {},
@@ -149,7 +149,7 @@ var updateCompany = /*#__PURE__*/function () {
       Actividad_Economica,
       Persona_Contacto,
       Telefono_Contacto,
-      IdEmpresa_PK
+      IdCompany_PK
     } = req.body;
     var UpdateData = {
       Razon_Social,
@@ -158,7 +158,7 @@ var updateCompany = /*#__PURE__*/function () {
       Persona_Contacto,
       Telefono_Contacto
     };
-    var result = yield _database.default.query("UPDATE company SET ? WHERE IdEmpresa_PK = ?", [UpdateData, IdEmpresa_PK]);
+    var result = yield _database.default.query("UPDATE company SET ? WHERE IdCompany_PK = ?", [UpdateData, IdCompany_PK]);
     if (result.affectedRows) res.json({
       status: 200,
       data: {},
@@ -180,7 +180,7 @@ exports.updateCompany = updateCompany;
 var eraseCompanyById = /*#__PURE__*/function () {
   var _ref7 = _asyncToGenerator(function* (req, res) {
     var Status = "delete";
-    var result = yield _database.default.query("UPDATE company SET Status=? WHERE  Status='active' AND IdEmpresa_PK = ?", [Status, req.params.id]);
+    var result = yield _database.default.query("UPDATE company SET Status=? WHERE  Status='active' AND IdCompany_PK = ?", [Status, req.params.id]);
     if (result.affectedRows) res.json({
       status: 200,
       data: {},

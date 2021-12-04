@@ -1,10 +1,10 @@
 import pool from "../database";
 
 export const createCompany = async (req, res)=>{
-   
-    const {Razon_Social,Representante_Legal, Actividad_Economica,Persona_Contacto,Telefono_Contacto, IdEmpresa_PK } =req.body;
+   console.log(req.body)
+    const {Razon_Social,Representante_Legal, Actividad_Economica,Persona_Contacto,Telefono_Contacto, IdCompany_PK } =req.body;
     const insertData={
-        IdEmpresa_PK,
+        IdCompany_PK,
         Razon_Social,
         Representante_Legal, 
         Actividad_Economica,
@@ -24,7 +24,7 @@ export const createCompany = async (req, res)=>{
 }
 
 export const getCompanyById =async (req, res)=>{
-    const company = await pool.query("SELECT * FROM company WHERE IdEmpresa_PK=?", [req.params.id]);
+    const company = await pool.query("SELECT * FROM company WHERE IdCompany_PK=?", [req.params.id]);
 
     if(company.length>0)
         res.json({status:200, data:company, msj:"Empresa consultada con exito"});
@@ -39,7 +39,7 @@ export const getCompanies = async (req, res)=>{
 
 export const deleteCompanyById = async (req, res)=>{
     const Status ="delete"; 
-    const result = await pool.query("UPDATE company SET Status=? WHERE  Status='active' AND IdEmpresa_PK = ?", [Status, req.params.id]);
+    const result = await pool.query("UPDATE company SET Status=? WHERE  Status='active' AND IdCompany_PK = ?", [Status, req.params.id]);
     if(result.affectedRows)
         res.json({status:200, data:{}, msj:"Compañia borrada con exito con exito"});
     else
@@ -48,7 +48,7 @@ export const deleteCompanyById = async (req, res)=>{
 
 export const undeleteCompany = async (req, res)=>{
     const Status ="active"
-    const result = await pool.query("UPDATE company SET Status=? WHERE  Status='delete' AND IdEmpresa_PK = ?", [Status, req.params.id]);
+    const result = await pool.query("UPDATE company SET Status=? WHERE  Status='delete' AND IdCompany_PK = ?", [Status, req.params.id]);
     if(result.affectedRows)
         res.json({status:200, data:{}, msj:"Compañia restaurada con exito con exito"});
     else
@@ -56,7 +56,7 @@ export const undeleteCompany = async (req, res)=>{
 }
 
 export const updateCompany = async (req, res)=>{
-    const {Razon_Social,Representante_Legal, Actividad_Economica,Persona_Contacto,Telefono_Contacto, IdEmpresa_PK } =req.body;
+    const {Razon_Social,Representante_Legal, Actividad_Economica,Persona_Contacto,Telefono_Contacto, IdCompany_PK } =req.body;
     const UpdateData={
         Razon_Social,
         Representante_Legal, 
@@ -64,7 +64,7 @@ export const updateCompany = async (req, res)=>{
         Persona_Contacto,
         Telefono_Contacto
     };
-    const result = await pool.query("UPDATE company SET ? WHERE IdEmpresa_PK = ?", [UpdateData, IdEmpresa_PK]);
+    const result = await pool.query("UPDATE company SET ? WHERE IdCompany_PK = ?", [UpdateData, IdCompany_PK]);
     if(result.affectedRows)
         res.json({status:200, data:{}, msj:"Compañia actualizada con exito con exito"});
     else
@@ -73,7 +73,7 @@ export const updateCompany = async (req, res)=>{
 
 export const eraseCompanyById = async (req, res)=>{
     const Status ="delete"; 
-    const result = await pool.query("UPDATE company SET Status=? WHERE  Status='active' AND IdEmpresa_PK = ?", [Status, req.params.id]);
+    const result = await pool.query("UPDATE company SET Status=? WHERE  Status='active' AND IdCompany_PK = ?", [Status, req.params.id]);
     if(result.affectedRows)
         res.json({status:200, data:{}, msj:"Compañia borrada con exito con exito"});
     else
