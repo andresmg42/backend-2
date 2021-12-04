@@ -26,7 +26,6 @@ var signup = /*#__PURE__*/function () {
       UserName,
       UserEmail,
       UserLastName,
-      IdCompany_FK,
       avatar
     } = req.body;
     var password = yield (0, _helpers.encryptPassword)(IdUser_PK + "**");
@@ -37,7 +36,6 @@ var signup = /*#__PURE__*/function () {
       UserName,
       password,
       UserLastName,
-      IdCompany_FK,
       userPermission,
       UserEmail,
       maxRoll: maxroll,
