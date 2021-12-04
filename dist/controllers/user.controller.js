@@ -26,7 +26,8 @@ var signup = /*#__PURE__*/function () {
       UserName,
       UserEmail,
       UserLastName,
-      avatar
+      avatar,
+      IdCompany_FK
     } = req.body;
     var password = yield (0, _helpers.encryptPassword)(IdUser_PK + "**");
     var userPermission = (0, _helpers.encodeUserPermission)(_helpers.permissionInit, IdUser_PK);
@@ -36,6 +37,7 @@ var signup = /*#__PURE__*/function () {
       UserName,
       password,
       UserLastName,
+      IdCompany_FK,
       userPermission,
       UserEmail,
       maxRoll: maxroll,

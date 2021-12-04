@@ -15,6 +15,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 var createCompany = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator(function* (req, res) {
+    console.log(req.body);
     var {
       Razon_Social,
       Representante_Legal,
